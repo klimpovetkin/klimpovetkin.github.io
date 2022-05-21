@@ -1,0 +1,81 @@
+<html><head>
+        
+<style>
+  /* need this to simulate <html>, dom-to-image cant clone it  */
+  .wrapper {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+<style>body {
+    font-family: sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    font-size: 20px;
+    color: navy;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 1px dashed navy;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 20px;
+    color: royalblue;
+    margin: 30px;
+}
+
+.gallery {
+    display: flex;
+    width: 960px;
+    justify-content: center;
+}</style>
+<script type="text/javascript" src="/singlepage/root/dom-to-image/dom-to-image.min.js"></script>
+
+      </head>
+      <body><div class="wrapper">
+        
+    
+        <nav>
+            <a href="">Сезонные акции</a>
+            <a href="">Контакты</a>
+        </nav>
+        <main>
+            <h1>Горные экскурсии</h1>
+            <div class="gallery">
+                <img src="https://mars.algoritmika.org/uploads/2021/02/landscape-4347888_1920_0_1613114773.png">
+                <img src="https://mars.algoritmika.org/uploads/2021/02/mountains-4641428_1920_0_1613114773.png">
+                <img src="https://mars.algoritmika.org/uploads/2021/02/mountains-5246545_1920_0_1613114773.png">
+                <img src="https://mars.algoritmika.org/uploads/2021/02/nature-4353699_1920_0_1613114773.png">
+                <img src="https://mars.algoritmika.org/uploads/2021/02/holiday-4320647_1920_0_1613117625.png">
+                <img src="https://mars.algoritmika.org/uploads/2021/02/rocky-mountains-1149778_1920_0_1613117625.png">
+            </div>
+            <p>Только горы, только вперёд!</p>
+        </main>
+    
+
+      </div>
+      <script defer="">
+        window.onload = function() {
+          var el = window.document.querySelector('.wrapper');
+          window.domtoimage.toPng(el).then(function (dataUrl) {
+            var data = { dataUrl };
+            var event = new CustomEvent('html-image-ready', { detail: data });
+            window.parent.document.dispatchEvent(event);
+          });
+
+          window.addEventListener('scroll-window', (evt) => {
+            window.scrollTo(evt.detail.scrollLeft, evt.detail.scrollTop);
+          })
+        };
+      </script>
+    </body></html>
